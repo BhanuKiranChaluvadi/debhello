@@ -1,4 +1,4 @@
-- [Create debian - debhello](#create-debian---debhello)
+- [Option 1. Create debian using debuild - debhello](#option-1-create-debian-using-debuild---debhello)
   - [STEP-1: Run Docker](#step-1-run-docker)
   - [STEP-2: Create templated Debian files](#step-2-create-templated-debian-files)
     - [Debmake](#debmake)
@@ -8,10 +8,11 @@
     - [debian/copyright](#debiancopyright)
   - [STEP-4: Build Debian Pacakage](#step-4-build-debian-pacakage)
     - [Debuild](#debuild)
+- [Option 2. Create debian using dpkg-deb](#option-2-create-debian-using-dpkg-deb)
 - [Inspect Debian Package](#inspect-debian-package)
 - [Unpack and Edit Debian Package](#unpack-and-edit-debian-package)
 - [Useful links](#useful-links)
-# Create debian - debhello
+# Option 1. Create debian using debuild - debhello
 We are closely following the (tutorial)[https://www.debian.org/doc/manuals/debmake-doc/ch04.en.html] from debian.org and we will be using docker container for this setup. 
 ## STEP-1: Run Docker
 Initialize docker container
@@ -119,6 +120,37 @@ cd ~/git/debhello-0.1
 debuild
 cd ..
 ls
+```
+
+# Option 2. Create debian using dpkg-deb
+Steps were taken from [youtube tutorial](https://www.youtube.com/watch?v=ep88vVfzDAo&ab_channel=JoeCollins)
+```bash
+# 0. export some variables
+# example export deb_path=hello_0.1-1_amd64.deb
+export deb_path=<path>/<pkg_name>_<version>_<architecture>
+# 1. create a directory to hold the project
+mkdir -p deb_path
+# 2. create a directory called "DEBIAN" inside the project
+mkdir -p deb_path/DEBIAN
+# 3. copy files into project root directory and include the final paths
+# /usr/bin/ would be <deb_path>/usr/bin/
+# /opt/ would <deb_path>/opt/
+# 4. Create a control file in DEBIAN:
+touch deb_path/DEBIAN/control
+# 5. Now add the necessary meta data to the control file:
+Package: my-program
+Version: 1.0
+Architecture: all
+Essential: no
+Priority: optional
+Depends: packages;my-program;needs;to;run
+Maintainer: Your Name
+Description: A short description of my-program that will be displayed when the package is being selected for installation. 
+# 6. If desired a "preinst" and/or "postinst" script can be added that execute before and/or after installation. They must be given proper execute permissions to run:
+# Add commands you'd like to run in postinst and then set the permissions to 755.
+touch deb_path/DEBIAN/postinst
+# 7. generate package
+dpkg-deb --build deb_path
 ```
 
 # Inspect Debian Package
