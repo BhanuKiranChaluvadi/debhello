@@ -179,7 +179,9 @@ $ ar rcs debhello_0.1-1_amd64.deb debian-binary control.tar.xz data.tar.xz
 $ dpkg-deb --info ./debhello_0.1-1_amd64.deb
 ```
 # Useful links 
+* [Debian New Maintainers' Guide](https://www.debian.org/doc/manuals/maint-guide/index.en.html)
 * [Chapter 4. Simple Example](https://www.debian.org/doc/manuals/debmake-doc/ch04.en.html)
 * [Chapter 8. More Examples](https://www.debian.org/doc/manuals/debmake-doc/ch08.en.html)
 * [debian c progam example](https://github.com/MichinariNukazawa/debian_package_c_application_automate_example)
 * [junyelee blogspot](http://junyelee.blogspot.com/2021/06/build-debian-packages.html)
+* [HowToPackageForDebian](https://wiki.debian.org/HowToPackageForDebian)
