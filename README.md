@@ -217,6 +217,7 @@ $ dpkg-deb --info ./debhello_0.1-1_amd64.deb
 * [debian c progam example](https://github.com/MichinariNukazawa/debian_package_c_application_automate_example)
 * [junyelee blogspot](http://junyelee.blogspot.com/2021/06/build-debian-packages.html)
 * [HowToPackageForDebian](https://wiki.debian.org/HowToPackageForDebian)
+* [Example control file with all attributes](https://manpages.debian.org/testing/dpkg-dev/deb-control.5.en.html)
 
 # TODO
 * Use jinja2 to generate files from templates. Here is an [example](https://github.com/dtcooper/raspotify/blob/master/build.sh)
